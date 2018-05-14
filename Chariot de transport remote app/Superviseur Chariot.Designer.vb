@@ -36,22 +36,29 @@ Partial Class Form1
         Me.TabGroup = New System.Windows.Forms.TabControl()
         Me.TabSettings = New System.Windows.Forms.TabPage()
         Me.TabVroum1 = New System.Windows.Forms.TabPage()
+        Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.LabelRFID = New System.Windows.Forms.Label()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.Vroum1ConnStatus = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.TableLayoutPanel3 = New System.Windows.Forms.TableLayoutPanel()
-        Me.RenameBoxTab2 = New System.Windows.Forms.TextBox()
         Me.Button2 = New System.Windows.Forms.Button()
+        Me.RenameBoxTab2 = New System.Windows.Forms.TextBox()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.GroupBox1.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabGroup.SuspendLayout()
         Me.TabSettings.SuspendLayout()
         Me.TabVroum1.SuspendLayout()
+        Me.GroupBox4.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.TableLayoutPanel3.SuspendLayout()
         Me.SuspendLayout()
+        '
+        'Serial
+        '
         '
         'GroupBox1
         '
@@ -170,6 +177,7 @@ Partial Class Form1
         '
         'TabVroum1
         '
+        Me.TabVroum1.Controls.Add(Me.GroupBox4)
         Me.TabVroum1.Controls.Add(Me.GroupBox3)
         Me.TabVroum1.Controls.Add(Me.GroupBox2)
         Me.TabVroum1.Location = New System.Drawing.Point(4, 22)
@@ -180,12 +188,31 @@ Partial Class Form1
         Me.TabVroum1.Text = "Chariot 1"
         Me.TabVroum1.UseVisualStyleBackColor = True
         '
+        'GroupBox4
+        '
+        Me.GroupBox4.Controls.Add(Me.LabelRFID)
+        Me.GroupBox4.Location = New System.Drawing.Point(6, 81)
+        Me.GroupBox4.Name = "GroupBox4"
+        Me.GroupBox4.Size = New System.Drawing.Size(150, 60)
+        Me.GroupBox4.TabIndex = 7
+        Me.GroupBox4.TabStop = False
+        Me.GroupBox4.Text = "Dernier tag RFID vu"
+        '
+        'LabelRFID
+        '
+        Me.LabelRFID.AutoSize = True
+        Me.LabelRFID.Location = New System.Drawing.Point(18, 28)
+        Me.LabelRFID.Name = "LabelRFID"
+        Me.LabelRFID.Size = New System.Drawing.Size(33, 13)
+        Me.LabelRFID.TabIndex = 0
+        Me.LabelRFID.Text = "Nope"
+        '
         'GroupBox3
         '
         Me.GroupBox3.Controls.Add(Me.Vroum1ConnStatus)
         Me.GroupBox3.Location = New System.Drawing.Point(6, 6)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(121, 58)
+        Me.GroupBox3.Size = New System.Drawing.Size(150, 58)
         Me.GroupBox3.TabIndex = 6
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Identifiant du Chariot"
@@ -223,13 +250,6 @@ Partial Class Form1
         Me.TableLayoutPanel3.Size = New System.Drawing.Size(263, 32)
         Me.TableLayoutPanel3.TabIndex = 4
         '
-        'RenameBoxTab2
-        '
-        Me.RenameBoxTab2.Location = New System.Drawing.Point(3, 3)
-        Me.RenameBoxTab2.Name = "RenameBoxTab2"
-        Me.RenameBoxTab2.Size = New System.Drawing.Size(125, 20)
-        Me.RenameBoxTab2.TabIndex = 3
-        '
         'Button2
         '
         Me.Button2.Location = New System.Drawing.Point(134, 3)
@@ -238,6 +258,18 @@ Partial Class Form1
         Me.Button2.TabIndex = 4
         Me.Button2.Text = "Valider"
         Me.Button2.UseVisualStyleBackColor = True
+        '
+        'RenameBoxTab2
+        '
+        Me.RenameBoxTab2.Location = New System.Drawing.Point(3, 3)
+        Me.RenameBoxTab2.Name = "RenameBoxTab2"
+        Me.RenameBoxTab2.Size = New System.Drawing.Size(125, 20)
+        Me.RenameBoxTab2.TabIndex = 3
+        '
+        'Timer1
+        '
+        Me.Timer1.Enabled = True
+        Me.Timer1.Interval = 1000
         '
         'Form1
         '
@@ -255,6 +287,8 @@ Partial Class Form1
         Me.TabGroup.ResumeLayout(False)
         Me.TabSettings.ResumeLayout(False)
         Me.TabVroum1.ResumeLayout(False)
+        Me.GroupBox4.ResumeLayout(False)
+        Me.GroupBox4.PerformLayout()
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
@@ -283,4 +317,7 @@ Partial Class Form1
     Friend WithEvents GroupBox2 As GroupBox
     Friend WithEvents RenameBoxTab2 As TextBox
     Friend WithEvents Button2 As Button
+    Friend WithEvents Timer1 As Timer
+    Friend WithEvents GroupBox4 As GroupBox
+    Public WithEvents LabelRFID As Label
 End Class
