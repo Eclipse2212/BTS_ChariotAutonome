@@ -35,6 +35,9 @@ Partial Class Form1
         Me.PilotButton = New System.Windows.Forms.Label()
         Me.TabGroup = New System.Windows.Forms.TabControl()
         Me.TabSettings = New System.Windows.Forms.TabPage()
+        Me.SpeedSendButton = New System.Windows.Forms.Button()
+        Me.SpeedScrollBar = New System.Windows.Forms.HScrollBar()
+        Me.SpeedProgBar = New System.Windows.Forms.ProgressBar()
         Me.TabVroum1 = New System.Windows.Forms.TabPage()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.LabelRFID = New System.Windows.Forms.Label()
@@ -45,6 +48,7 @@ Partial Class Form1
         Me.Button2 = New System.Windows.Forms.Button()
         Me.RenameBoxTab2 = New System.Windows.Forms.TextBox()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.LabelPourcent = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -112,7 +116,6 @@ Partial Class Form1
         'ComboBox1
         '
         Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Items.AddRange(New Object() {"COM1", "COM2", "COM3", "COM4", "COM5", "COM6", "COM7", "COM8", "COM9"})
         Me.ComboBox1.Location = New System.Drawing.Point(3, 31)
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(155, 21)
@@ -166,6 +169,10 @@ Partial Class Form1
         '
         'TabSettings
         '
+        Me.TabSettings.Controls.Add(Me.LabelPourcent)
+        Me.TabSettings.Controls.Add(Me.SpeedSendButton)
+        Me.TabSettings.Controls.Add(Me.SpeedScrollBar)
+        Me.TabSettings.Controls.Add(Me.SpeedProgBar)
         Me.TabSettings.Controls.Add(Me.GroupBox1)
         Me.TabSettings.Location = New System.Drawing.Point(4, 22)
         Me.TabSettings.Name = "TabSettings"
@@ -174,6 +181,31 @@ Partial Class Form1
         Me.TabSettings.TabIndex = 0
         Me.TabSettings.Text = "Paramètres"
         Me.TabSettings.UseVisualStyleBackColor = True
+        '
+        'SpeedSendButton
+        '
+        Me.SpeedSendButton.Location = New System.Drawing.Point(404, 63)
+        Me.SpeedSendButton.Name = "SpeedSendButton"
+        Me.SpeedSendButton.Size = New System.Drawing.Size(177, 25)
+        Me.SpeedSendButton.TabIndex = 12
+        Me.SpeedSendButton.Text = "Envoyer"
+        Me.SpeedSendButton.UseVisualStyleBackColor = True
+        '
+        'SpeedScrollBar
+        '
+        Me.SpeedScrollBar.LargeChange = 1
+        Me.SpeedScrollBar.Location = New System.Drawing.Point(9, 63)
+        Me.SpeedScrollBar.Name = "SpeedScrollBar"
+        Me.SpeedScrollBar.Size = New System.Drawing.Size(374, 26)
+        Me.SpeedScrollBar.TabIndex = 10
+        '
+        'SpeedProgBar
+        '
+        Me.SpeedProgBar.Location = New System.Drawing.Point(26, 35)
+        Me.SpeedProgBar.Name = "SpeedProgBar"
+        Me.SpeedProgBar.Size = New System.Drawing.Size(344, 25)
+        Me.SpeedProgBar.Step = 1
+        Me.SpeedProgBar.TabIndex = 11
         '
         'TabVroum1
         '
@@ -191,7 +223,7 @@ Partial Class Form1
         'GroupBox4
         '
         Me.GroupBox4.Controls.Add(Me.LabelRFID)
-        Me.GroupBox4.Location = New System.Drawing.Point(6, 81)
+        Me.GroupBox4.Location = New System.Drawing.Point(6, 148)
         Me.GroupBox4.Name = "GroupBox4"
         Me.GroupBox4.Size = New System.Drawing.Size(150, 60)
         Me.GroupBox4.TabIndex = 7
@@ -210,7 +242,7 @@ Partial Class Form1
         'GroupBox3
         '
         Me.GroupBox3.Controls.Add(Me.Vroum1ConnStatus)
-        Me.GroupBox3.Location = New System.Drawing.Point(6, 6)
+        Me.GroupBox3.Location = New System.Drawing.Point(162, 150)
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.Size = New System.Drawing.Size(150, 58)
         Me.GroupBox3.TabIndex = 6
@@ -269,7 +301,15 @@ Partial Class Form1
         'Timer1
         '
         Me.Timer1.Enabled = True
-        Me.Timer1.Interval = 1000
+        '
+        'LabelPourcent
+        '
+        Me.LabelPourcent.AutoSize = True
+        Me.LabelPourcent.Location = New System.Drawing.Point(149, 19)
+        Me.LabelPourcent.Name = "LabelPourcent"
+        Me.LabelPourcent.Size = New System.Drawing.Size(13, 13)
+        Me.LabelPourcent.TabIndex = 13
+        Me.LabelPourcent.Text = "0"
         '
         'Form1
         '
@@ -286,6 +326,7 @@ Partial Class Form1
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabGroup.ResumeLayout(False)
         Me.TabSettings.ResumeLayout(False)
+        Me.TabSettings.PerformLayout()
         Me.TabVroum1.ResumeLayout(False)
         Me.GroupBox4.ResumeLayout(False)
         Me.GroupBox4.PerformLayout()
@@ -320,4 +361,8 @@ Partial Class Form1
     Friend WithEvents Timer1 As Timer
     Friend WithEvents GroupBox4 As GroupBox
     Public WithEvents LabelRFID As Label
+    Friend WithEvents SpeedProgBar As ProgressBar
+    Friend WithEvents SpeedScrollBar As HScrollBar
+    Friend WithEvents SpeedSendButton As Button
+    Friend WithEvents LabelPourcent As Label
 End Class
