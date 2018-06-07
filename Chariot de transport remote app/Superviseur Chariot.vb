@@ -2,7 +2,7 @@
 
 Public Class Form1
 
-    Dim donnees As String 'On définit les données en variable globale
+    Dim donnees(10) As Char 'On définit les données en variable globale
     Dim TagsHex As New List(Of String) From
         {
         "0000000000000000000000", 'Badge 1
@@ -28,7 +28,7 @@ Public Class Form1
         Serial.RtsEnable = False
         Serial.DtrEnable = False
         Serial.Parity = Parity.None
-        Console.WriteLine("[NewLine] " + Serial.NewLine.ToString)
+        Serial.NewLine = vbCr
 
         GetSerialPortNames()
 
@@ -104,9 +104,31 @@ Public Class Form1
 
     Private Sub Serial_DataReceived(sender As Object, e As SerialDataReceivedEventArgs) Handles Serial.DataReceived
         'Quand on reçoit des données série, on les log dans la console de débug et on l'affiche dans l'encart RFID
-        donnees = Serial.ReadLine() 'Normalement un tag RFID est constitué de "B[Tag en hex]"
+        'donnees = Serial.ReadLine() 'Normalement un tag RFID est constitué de "B[Tag en hex]"
+        Dim donnees_char As Char
+        Dim b_char As Char = ChrW(&H42)
+        Dim D As Char
+        Dim cr_char As Char = Convert.ToChar(vbCr)
 
-        Console.WriteLine("[Reçu] " + donnees)
+        donnees_char = Convert.ToChar(Serial.ReadChar()) 'Lecture données as Char
+        If donnees_char = b_char Then
+            Dim i As Integer = 0
+            While donnees(10) = vbNullChar
+                Serial.ReadChar() 'On vide le VbCr
+                D = Convert.ToChar(Serial.ReadChar())
+                Console.WriteLine("Test: " + D)
+                If D <> cr_char Then
+                    donnees(i) = D
+                    i += 1
+                End If
+
+
+            End While
+
+            Console.WriteLine("[Mise en forme] " + donnees)
+        End If
+
+        'Console.WriteLine("[Reçu] " + donnees_char)
         'TODO: Foreach tag in list pour comparer avec la donnée reçue sans le "B"
 
     End Sub
